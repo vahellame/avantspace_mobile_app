@@ -30,6 +30,7 @@ Future<void> init(BuildContext context) async {
   ].request();
 
   for (Permission permission in statuses.keys.toList()) {
+    print('$permission ${statuses[permission]}');
     if (statuses[permission] != PermissionStatus.granted) {
       Fluttertoast.showToast(
         msg: 'Permissions required!',
