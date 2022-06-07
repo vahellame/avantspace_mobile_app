@@ -204,230 +204,228 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Stack(
-          children: [
-            _iconTarget(),
-            _iconMe(),
-            _iconTargetBytes != null && _iconMeBytes != null
-                ? GoogleMap(
-                    onMapCreated: (GoogleMapController value) {
-                      _googleMapController = value;
-                    },
-                    zoomControlsEnabled: false,
-                    initialCameraPosition: CameraPosition(
-                      target: _latLngTarget,
-                      zoom: 13.0,
-                    ),
-                    markers: _markers(),
-                    circles: _circles,
-                  )
-                : Container(
-                    color: Colors.white,
+    return Scaffold(
+      body: Stack(
+        children: [
+          _iconTarget(),
+          _iconMe(),
+          _iconTargetBytes != null && _iconMeBytes != null
+              ? GoogleMap(
+                  onMapCreated: (GoogleMapController value) {
+                    _googleMapController = value;
+                  },
+                  zoomControlsEnabled: false,
+                  initialCameraPosition: CameraPosition(
+                    target: _latLngTarget,
+                    zoom: 13.0,
                   ),
-            Center(
-              child: Column(
-                children: [
-                  Expanded(child: Container()),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 16, bottom: 16),
-                        child: Material(
-                          child: InkWell(
-                            child: Container(
-                              child: const Center(
-                                child: Icon(
-                                  Icons.near_me_rounded,
-                                  color: ViewConfigColors.emphasisHigh,
-                                  size: 32,
-                                ),
+                  markers: _markers(),
+                  circles: _circles,
+                )
+              : Container(
+                  color: Colors.white,
+                ),
+          Center(
+            child: Column(
+              children: [
+                Expanded(child: Container()),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 16, bottom: 16),
+                      child: Material(
+                        child: InkWell(
+                          child: Container(
+                            child: const Center(
+                              child: Icon(
+                                Icons.near_me_rounded,
+                                color: ViewConfigColors.emphasisHigh,
+                                size: 32,
                               ),
-                              decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.all(Radius.circular(12)),
-                              ),
-                              height: 56,
-                              width: 56,
                             ),
-                            onTap: () {
-                              _googleMapController.moveCamera(CameraUpdate.newLatLng(_latLngMe!));
-                            },
-                            borderRadius: const BorderRadius.all(Radius.circular(12)),
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(12)),
+                            ),
+                            height: 56,
+                            width: 56,
                           ),
-                          borderRadius: const BorderRadius.all(Radius.circular(12)),
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                    mainAxisAlignment: MainAxisAlignment.end,
-                  ),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 16, right: 16),
-                        child: CustomBurgerButton(
                           onTap: () {
-                            showModalBottomSheet(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return const BottomNavigationPanel();
-                              },
-                              backgroundColor: Colors.transparent,
-                            );
+                            _googleMapController.moveCamera(CameraUpdate.newLatLng(_latLngMe!));
                           },
-                        ),
-                      ),
-                    ],
-                    mainAxisAlignment: MainAxisAlignment.end,
-                  ),
-                ],
-              ),
-            ),
-            Center(
-              child: Column(
-                children: [
-                  Expanded(child: Container()),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 16, bottom: 16),
-                        child: Material(
-                          child: InkWell(
-                            child: Container(
-                              child: const Center(
-                                child: Icon(
-                                  Icons.add_rounded,
-                                  color: ViewConfigColors.emphasisHigh,
-                                  size: 32,
-                                ),
-                              ),
-                              decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.all(Radius.circular(12)),
-                              ),
-                              height: 56,
-                              width: 56,
-                            ),
-                            onTap: () {
-                              _googleMapController.moveCamera(CameraUpdate.zoomIn());
-                            },
-                            borderRadius: const BorderRadius.all(Radius.circular(12)),
-                          ),
                           borderRadius: const BorderRadius.all(Radius.circular(12)),
-                          color: Colors.white,
                         ),
+                        borderRadius: const BorderRadius.all(Radius.circular(12)),
+                        color: Colors.white,
                       ),
-                    ],
-                    mainAxisAlignment: MainAxisAlignment.end,
-                  ),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 16, bottom: 16),
-                        child: Material(
-                          child: InkWell(
-                            child: Container(
-                              child: const Center(
-                                child: Icon(
-                                  Icons.remove_rounded,
-                                  color: ViewConfigColors.emphasisHigh,
-                                  size: 32,
-                                ),
-                              ),
-                              decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.all(Radius.circular(12)),
-                              ),
-                              height: 56,
-                              width: 56,
-                            ),
-                            onTap: () {
-                              _googleMapController.moveCamera(CameraUpdate.zoomOut());
+                    ),
+                  ],
+                  mainAxisAlignment: MainAxisAlignment.end,
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 16, right: 16),
+                      child: CustomBurgerButton(
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return const BottomNavigationPanel();
                             },
-                            borderRadius: const BorderRadius.all(Radius.circular(12)),
+                            backgroundColor: Colors.transparent,
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                  mainAxisAlignment: MainAxisAlignment.end,
+                ),
+              ],
+            ),
+          ),
+          Center(
+            child: Column(
+              children: [
+                Expanded(child: Container()),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 16, bottom: 16),
+                      child: Material(
+                        child: InkWell(
+                          child: Container(
+                            child: const Center(
+                              child: Icon(
+                                Icons.add_rounded,
+                                color: ViewConfigColors.emphasisHigh,
+                                size: 32,
+                              ),
+                            ),
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(12)),
+                            ),
+                            height: 56,
+                            width: 56,
                           ),
+                          onTap: () {
+                            _googleMapController.moveCamera(CameraUpdate.zoomIn());
+                          },
                           borderRadius: const BorderRadius.all(Radius.circular(12)),
-                          color: Colors.white,
                         ),
+                        borderRadius: const BorderRadius.all(Radius.circular(12)),
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                  mainAxisAlignment: MainAxisAlignment.end,
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 16, bottom: 16),
+                      child: Material(
+                        child: InkWell(
+                          child: Container(
+                            child: const Center(
+                              child: Icon(
+                                Icons.remove_rounded,
+                                color: ViewConfigColors.emphasisHigh,
+                                size: 32,
+                              ),
+                            ),
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(12)),
+                            ),
+                            height: 56,
+                            width: 56,
+                          ),
+                          onTap: () {
+                            _googleMapController.moveCamera(CameraUpdate.zoomOut());
+                          },
+                          borderRadius: const BorderRadius.all(Radius.circular(12)),
+                        ),
+                        borderRadius: const BorderRadius.all(Radius.circular(12)),
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                  mainAxisAlignment: MainAxisAlignment.end,
+                ),
+                Expanded(child: Container()),
+              ],
+            ),
+          ),
+          Center(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 16, top: 16),
+                  child: Row(
+                    children: [
+                      Container(
+                        child: Row(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(left: 8.0),
+                              child: Icon(
+                                Icons.play_arrow_rounded,
+                                size: 18,
+                                color: ViewConfigColors.primary700,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 4.0, right: 8),
+                              child: Text(
+                                '24.02.2022; 14:00',
+                                style: ViewConfigTextStyles.body1(ViewConfigColors.emphasisHigh),
+                              ),
+                            ),
+                          ],
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                        ),
+                        decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(32)), color: Colors.white),
+                        height: 32,
                       ),
                     ],
-                    mainAxisAlignment: MainAxisAlignment.end,
                   ),
-                  Expanded(child: Container()),
-                ],
-              ),
-            ),
-            Center(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16, top: 16),
-                    child: Row(
-                      children: [
-                        Container(
-                          child: Row(
-                            children: [
-                              const Padding(
-                                padding: EdgeInsets.only(left: 8.0),
-                                child: Icon(
-                                  Icons.play_arrow_rounded,
-                                  size: 18,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16, top: 12),
+                  child: Row(
+                    children: [
+                      Container(
+                        child: Row(
+                          children: [
+                            Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: SvgPicture.asset(
+                                  'assets/images/icon_time_primary700.svg',
+                                  height: 18,
                                   color: ViewConfigColors.primary700,
-                                ),
+                                )),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 4.0, right: 8),
+                              child: Text(
+                                '14:05:22',
+                                style: ViewConfigTextStyles.body1(ViewConfigColors.emphasisHigh),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 4.0, right: 8),
-                                child: Text(
-                                  '24.02.2022; 14:00',
-                                  style: ViewConfigTextStyles.body1(ViewConfigColors.emphasisHigh),
-                                ),
-                              ),
-                            ],
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                          ),
-                          decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(32)), color: Colors.white),
-                          height: 32,
+                            ),
+                          ],
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.start,
                         ),
-                      ],
-                    ),
+                        decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(32)), color: Colors.white),
+                        height: 32,
+                      ),
+                    ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16, top: 12),
-                    child: Row(
-                      children: [
-                        Container(
-                          child: Row(
-                            children: [
-                              Padding(
-                                  padding: const EdgeInsets.only(left: 8.0),
-                                  child: SvgPicture.asset(
-                                    'assets/images/icon_time_primary700.svg',
-                                    height: 18,
-                                    color: ViewConfigColors.primary700,
-                                  )),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 4.0, right: 8),
-                                child: Text(
-                                  '14:05:22',
-                                  style: ViewConfigTextStyles.body1(ViewConfigColors.emphasisHigh),
-                                ),
-                              ),
-                            ],
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                          ),
-                          decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(32)), color: Colors.white),
-                          height: 32,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Expanded(child: Container()),
-                ],
-              ),
+                ),
+                Expanded(child: Container()),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

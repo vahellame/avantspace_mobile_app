@@ -20,73 +20,71 @@ class _PushBroadcastingScreenState extends State<PushBroadcastingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Stack(
-          children: [
-            Center(
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 16, top: 16),
-                        child: CustomCloseButton(
-                          onTap: () {
-                            Navigator.pushReplacementNamed(context, '/bad_characteristics');
-                          },
-                        ),
-                      ),
-                    ],
-                    mainAxisAlignment: MainAxisAlignment.end,
-                  ),
-                ],
-              ),
-            ),
-            Center(
-              child: Column(
-                children: [
-                  Expanded(child: Container()),
-                  Image.asset(
-                    'assets/images/map.png',
-                    width: 234,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 24, left: 24, right: 24),
-                    child: Text(
-                      'В вашем регионе запланирован сеанс вещания из космоса!',
-                      style: ViewConfigTextStyles.headline6(ViewConfigColors.emphasisHigh),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16, left: 36, right: 36),
-                    child: Text(
-                      'Сеанс пройдет 23 января с 17:00 до 17:30 по местному времени',
-                      style: ViewConfigTextStyles.body1(ViewConfigColors.emphasisHigh),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16, left: 36, right: 36),
-                    child: SizedBox(
-                      child: PrimaryButton(
-                        text: 'подробнее'.toUpperCase(),
+    return Scaffold(
+      body: Stack(
+        children: [
+          Center(
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 16, top: 16),
+                      child: CustomCloseButton(
                         onTap: () {
                           Navigator.pushReplacementNamed(context, '/bad_characteristics');
                         },
                       ),
-                      width: 177,
                     ),
-                  ),
-                  Expanded(child: Container()),
-                ],
-              ),
+                  ],
+                  mainAxisAlignment: MainAxisAlignment.end,
+                ),
+              ],
             ),
-          ],
-        ),
-        backgroundColor: ViewConfigColors.bg,
+          ),
+          Center(
+            child: Column(
+              children: [
+                Expanded(child: Container()),
+                Image.asset(
+                  'assets/images/map.png',
+                  width: 234,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 24, left: 24, right: 24),
+                  child: Text(
+                    'В вашем регионе запланирован сеанс вещания из космоса!',
+                    style: ViewConfigTextStyles.headline6(ViewConfigColors.emphasisHigh),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16, left: 36, right: 36),
+                  child: Text(
+                    'Сеанс пройдет 23 января с 17:00 до 17:30 по местному времени',
+                    style: ViewConfigTextStyles.body1(ViewConfigColors.emphasisHigh),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16, left: 36, right: 36),
+                  child: SizedBox(
+                    child: PrimaryButton(
+                      text: 'подробнее'.toUpperCase(),
+                      onTap: () {
+                        Navigator.pushReplacementNamed(context, '/bad_characteristics');
+                      },
+                    ),
+                    width: 177,
+                  ),
+                ),
+                Expanded(child: Container()),
+              ],
+            ),
+          ),
+        ],
       ),
+      backgroundColor: ViewConfigColors.bg,
     );
   }
 }
