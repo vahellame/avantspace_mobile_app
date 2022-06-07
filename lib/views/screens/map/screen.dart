@@ -89,7 +89,7 @@ class _MapScreenState extends State<MapScreen> {
         );
       },
     );
-    Future.delayed(Duration(milliseconds: 100)).then(
+    Future.delayed(const Duration(milliseconds: 100)).then(
       (_) {
         _createIconMeBytes();
         _createIconTargetBytes();
@@ -109,7 +109,6 @@ class _MapScreenState extends State<MapScreen> {
         );
       },
     );
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
     print('init state');
     super.initState();
   }

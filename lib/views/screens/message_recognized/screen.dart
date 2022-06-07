@@ -19,7 +19,6 @@ class MessageRecognizedScreen extends StatefulWidget {
 class _MessageRecognizedScreenState extends State<MessageRecognizedScreen> {
   @override
   void initState() {
-    // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
     super.initState();
   }
 

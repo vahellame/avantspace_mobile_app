@@ -7,7 +7,6 @@ import 'package:avantspace_mobile_app/views/widgets/custom_burger_button.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 import 'package:provider/provider.dart';
 
@@ -40,19 +39,17 @@ class HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     _initializeControllerFuture = _controller!.initialize();
     _cameraButtonState = CameraButtonState.recordVideo;
 
-    Future.delayed(const Duration(milliseconds: 3)).then(
-      (_) async {
-        if (MediaQuery.of(context).size.height / MediaQuery.of(context).size.width <= 1920 / 1080) {
-          SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []).then(
-            (_) {
-              setState(() {});
-            },
-          );
-        } else {
-          SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
-        }
-      },
-    );
+    // Future.delayed(const Duration(milliseconds: 3)).then(
+    //   (_) async {
+    //     if (MediaQuery.of(context).size.height / MediaQuery.of(context).size.width <= 1920 / 1080) {
+    //         (_) {
+    //           setState(() {});
+    //         },
+    //       );
+    //     } else {
+    //     }
+    //   },
+    // );
   }
 
   @override

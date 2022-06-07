@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:avantspace_mobile_app/views/view_config.dart';
 import 'package:avantspace_mobile_app/views/widgets/custom_close_button.dart';
@@ -16,7 +15,6 @@ class PushBroadcastingScreen extends StatefulWidget {
 class _PushBroadcastingScreenState extends State<PushBroadcastingScreen> {
   @override
   void initState() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
     super.initState();
   }
 

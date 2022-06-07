@@ -13,7 +13,6 @@ class BadCharacteristicsScreen extends StatefulWidget {
 class _BadCharacteristicsScreenState extends State<BadCharacteristicsScreen> {
   @override
   void initState() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
     super.initState();
   }
 

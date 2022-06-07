@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:avantspace_mobile_app/logic/bottom_navigation_panel.dart';
 import 'package:avantspace_mobile_app/logic/camera.dart';
 import 'package:avantspace_mobile_app/views/screens/bad_characteristics/screen.dart';
@@ -14,6 +12,7 @@ import 'package:avantspace_mobile_app/views/screens/test/screen.dart';
 import 'package:avantspace_mobile_app/views/screens/upcoming_sessions/screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
@@ -22,6 +21,9 @@ Future<void> init(BuildContext context) async {
 
   Map<Permission, PermissionStatus> statuses = await [
     Permission.location,
+    Permission.locationAlways,
+    Permission.locationWhenInUse,
+    Permission.accessMediaLocation,
     Permission.storage,
     Permission.camera,
     Permission.microphone,
@@ -29,7 +31,12 @@ Future<void> init(BuildContext context) async {
 
   for (Permission permission in statuses.keys.toList()) {
     if (statuses[permission] != PermissionStatus.granted) {
-      exit(0);
+      Fluttertoast.showToast(
+        msg: 'Permissions required!',
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+      );
     }
   }
 
@@ -38,13 +45,13 @@ Future<void> init(BuildContext context) async {
   await Future.delayed(const Duration(seconds: 1));
   await context.read<CameraModel>().init();
   await context.read<BottomNavigationPanelModel>().init();
-  await  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
+  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
 
   print('init is done');
 }
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
+  // WidgetsFlutterBinding.ensureInitialized();
   runApp(
     MultiProvider(
       child: const AvantspaceApp(),
@@ -74,6 +81,7 @@ class _AvantspaceAppState extends State<AvantspaceApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Avantspace',
       builder: (BuildContext context, Widget? child) {
         return FutureBuilder(
           future: _initFuture,

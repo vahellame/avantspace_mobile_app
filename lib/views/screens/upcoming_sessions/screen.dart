@@ -15,7 +15,6 @@ class UpcomingSessionsScreen extends StatefulWidget {
 class _UpcomingSessionsScreenState extends State<UpcomingSessionsScreen> {
   @override
   void initState() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
     super.initState();
   }
 

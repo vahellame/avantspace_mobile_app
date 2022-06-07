@@ -13,7 +13,6 @@ class BadPlaceScreen extends StatefulWidget {
 class _BadPlaceScreenState extends State<BadPlaceScreen> {
   @override
   void initState() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
     super.initState();
   }
 

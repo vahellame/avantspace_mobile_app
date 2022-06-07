@@ -15,7 +15,6 @@ class FAQScreen extends StatefulWidget {
 class _FAQScreenState extends State<FAQScreen> {
   @override
   void initState() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
     super.initState();
   }
 
@@ -35,7 +34,7 @@ class _FAQScreenState extends State<FAQScreen> {
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsets.all(16),
+                              padding: const EdgeInsets.all(16),
                               child: Text(
                                 'Frequently Asked Questions',
                                 style: ViewConfigTextStyles.headline6(ViewConfigColors.emphasisHigh),
@@ -114,7 +113,7 @@ class _FAQScreenState extends State<FAQScreen> {
                                               'Unique technology.A group of microsatellites are equipped with a laser system for projecting images in the night sky. It works as a QR code in space.',
                                               style: ViewConfigTextStyles.body2(ViewConfigColors.emphasisHigh),
                                             ),
-                                            contentPadding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
+                                            contentPadding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
                                           ),
                                         ],
                                       ),
