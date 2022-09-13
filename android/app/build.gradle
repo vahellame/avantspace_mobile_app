@@ -48,26 +48,12 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
-    signingConfigs {
-        release {
-            storeFile file("../../../../.android/release.keystore")
-            storePassword "Saveyourself-0143"
-            keyAlias "androidreleasekey"
-            keyPassword "Saveyourself-0143"
-        }
-        debug {
-            storeFile file("../../../../.android/debug.keystore")
-            storePassword "Saveyourself-0143"
-            keyAlias "androiddebugkey"
-            keyPassword "Saveyourself-0143"
-        }
-    }
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
         }
         release {
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug
         }
     }
 }

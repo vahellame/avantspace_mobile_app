@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MessageRecognizedScreen extends StatefulWidget {
   const MessageRecognizedScreen({Key? key}) : super(key: key);
@@ -88,7 +89,10 @@ class _MessageRecognizedScreenState extends State<MessageRecognizedScreen> {
                           'avantspace.com',
                           style: ViewConfigTextStyles.body1(ViewConfigColors.primary700).copyWith(decoration: TextDecoration.underline),
                         ),
-                        onTap: () {},
+                        onTap: () {
+                          final Uri url = Uri.parse('https://avantspace.com');
+                          launchUrl(url);
+                        },
                       ),
                     ),
                     Expanded(child: Container()),
@@ -105,16 +109,6 @@ class _MessageRecognizedScreenState extends State<MessageRecognizedScreen> {
                         ),
                         onTap: () async {
                           await Clipboard.setData(const ClipboardData(text: 'Заходи: avantspace.com'));
-                          final snackBar = SnackBar(
-                            content: const Text('Copied'),
-                            action: SnackBarAction(
-                              label: 'Close',
-                              onPressed: () {
-                                // Some code to undo the change.
-                              },
-                            ),
-                          );
-                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         },
                       ),
                     ),
