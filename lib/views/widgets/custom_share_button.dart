@@ -12,8 +12,18 @@ class CustomShareButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      borderRadius: const BorderRadius.all(Radius.circular(8)),
+      color: ViewConfigColors.primary700,
       child: InkWell(
+        onTap: onTap,
+        borderRadius: const BorderRadius.all(Radius.circular(8)),
         child: Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(8)),
+            boxShadow: ViewConfigShadows.dp01,
+          ),
+          height: 32,
+          width: 32,
           child: const Center(
             child: Icon(
               Icons.share_rounded,
@@ -21,18 +31,8 @@ class CustomShareButton extends StatelessWidget {
               size: 24,
             ),
           ),
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(8)),
-            boxShadow: ViewConfigShadows.dp01,
-          ),
-          height: 32,
-          width: 32,
         ),
-        onTap: onTap,
-        borderRadius: const BorderRadius.all(Radius.circular(8)),
       ),
-      borderRadius: const BorderRadius.all(Radius.circular(8)),
-      color: ViewConfigColors.primary700,
       // elevation: 1,
     );
   }

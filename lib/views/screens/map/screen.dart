@@ -53,13 +53,13 @@ class _MapScreenState extends State<MapScreen> {
 
     Location location = Location();
     location.serviceEnabled().then(
-      (_serviceEnabled) async {
-        if (!_serviceEnabled) {
-          _serviceEnabled = await location.requestService();
+      (serviceEnabled) async {
+        if (!serviceEnabled) {
+          serviceEnabled = await location.requestService();
         }
-        PermissionStatus _permissionGranted = await location.hasPermission();
-        if (_permissionGranted == PermissionStatus.denied) {
-          _permissionGranted = await location.requestPermission();
+        PermissionStatus permissionGranted = await location.hasPermission();
+        if (permissionGranted == PermissionStatus.denied) {
+          permissionGranted = await location.requestPermission();
         }
         location.getLocation().then(
           (LocationData value) async {
@@ -124,32 +124,32 @@ class _MapScreenState extends State<MapScreen> {
             return Transform.rotate(
               angle: (direction! * (math.pi / 180) * -1),
               child: Container(
-                child: const Icon(
-                  Icons.navigation_rounded,
-                  size: 24,
-                  color: Colors.white,
-                ),
                 decoration: const BoxDecoration(
                   color: ViewConfigColors.primary700,
                   shape: BoxShape.circle,
                 ),
                 height: 32,
                 width: 32,
+                child: const Icon(
+                  Icons.navigation_rounded,
+                  size: 24,
+                  color: Colors.white,
+                ),
               ),
             );
           }
           return Container(
-            child: const Icon(
-              Icons.navigation_rounded,
-              size: 24,
-              color: Colors.white,
-            ),
             decoration: const BoxDecoration(
               color: ViewConfigColors.primary700,
               shape: BoxShape.circle,
             ),
             height: 32,
             width: 32,
+            child: const Icon(
+              Icons.navigation_rounded,
+              size: 24,
+              color: Colors.white,
+            ),
           );
         },
       ),
@@ -230,12 +230,24 @@ class _MapScreenState extends State<MapScreen> {
               children: [
                 Expanded(child: Container()),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(right: 16, bottom: 16),
                       child: Material(
+                        borderRadius: const BorderRadius.all(Radius.circular(12)),
+                        color: Colors.white,
                         child: InkWell(
+                          onTap: () {
+                            _googleMapController.moveCamera(CameraUpdate.newLatLng(_latLngMe!));
+                          },
+                          borderRadius: const BorderRadius.all(Radius.circular(12)),
                           child: Container(
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(12)),
+                            ),
+                            height: 56,
+                            width: 56,
                             child: const Center(
                               child: Icon(
                                 Icons.near_me_rounded,
@@ -243,25 +255,14 @@ class _MapScreenState extends State<MapScreen> {
                                 size: 32,
                               ),
                             ),
-                            decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(12)),
-                            ),
-                            height: 56,
-                            width: 56,
                           ),
-                          onTap: () {
-                            _googleMapController.moveCamera(CameraUpdate.newLatLng(_latLngMe!));
-                          },
-                          borderRadius: const BorderRadius.all(Radius.circular(12)),
                         ),
-                        borderRadius: const BorderRadius.all(Radius.circular(12)),
-                        color: Colors.white,
                       ),
                     ),
                   ],
-                  mainAxisAlignment: MainAxisAlignment.end,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(bottom: 16, right: 16),
@@ -278,7 +279,6 @@ class _MapScreenState extends State<MapScreen> {
                       ),
                     ),
                   ],
-                  mainAxisAlignment: MainAxisAlignment.end,
                 ),
               ],
             ),
@@ -288,12 +288,24 @@ class _MapScreenState extends State<MapScreen> {
               children: [
                 Expanded(child: Container()),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(right: 16, bottom: 16),
                       child: Material(
+                        borderRadius: const BorderRadius.all(Radius.circular(12)),
+                        color: Colors.white,
                         child: InkWell(
+                          onTap: () {
+                            _googleMapController.moveCamera(CameraUpdate.zoomIn());
+                          },
+                          borderRadius: const BorderRadius.all(Radius.circular(12)),
                           child: Container(
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(12)),
+                            ),
+                            height: 56,
+                            width: 56,
                             child: const Center(
                               child: Icon(
                                 Icons.add_rounded,
@@ -301,31 +313,31 @@ class _MapScreenState extends State<MapScreen> {
                                 size: 32,
                               ),
                             ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 16, bottom: 16),
+                      child: Material(
+                        borderRadius: const BorderRadius.all(Radius.circular(12)),
+                        color: Colors.white,
+                        child: InkWell(
+                          onTap: () {
+                            _googleMapController.moveCamera(CameraUpdate.zoomOut());
+                          },
+                          borderRadius: const BorderRadius.all(Radius.circular(12)),
+                          child: Container(
                             decoration: const BoxDecoration(
                               borderRadius: BorderRadius.all(Radius.circular(12)),
                             ),
                             height: 56,
                             width: 56,
-                          ),
-                          onTap: () {
-                            _googleMapController.moveCamera(CameraUpdate.zoomIn());
-                          },
-                          borderRadius: const BorderRadius.all(Radius.circular(12)),
-                        ),
-                        borderRadius: const BorderRadius.all(Radius.circular(12)),
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                  mainAxisAlignment: MainAxisAlignment.end,
-                ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 16, bottom: 16),
-                      child: Material(
-                        child: InkWell(
-                          child: Container(
                             child: const Center(
                               child: Icon(
                                 Icons.remove_rounded,
@@ -333,23 +345,11 @@ class _MapScreenState extends State<MapScreen> {
                                 size: 32,
                               ),
                             ),
-                            decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(12)),
-                            ),
-                            height: 56,
-                            width: 56,
                           ),
-                          onTap: () {
-                            _googleMapController.moveCamera(CameraUpdate.zoomOut());
-                          },
-                          borderRadius: const BorderRadius.all(Radius.circular(12)),
                         ),
-                        borderRadius: const BorderRadius.all(Radius.circular(12)),
-                        color: Colors.white,
                       ),
                     ),
                   ],
-                  mainAxisAlignment: MainAxisAlignment.end,
                 ),
                 Expanded(child: Container()),
               ],
@@ -363,7 +363,11 @@ class _MapScreenState extends State<MapScreen> {
                   child: Row(
                     children: [
                       Container(
+                        decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(32)), color: Colors.white),
+                        height: 32,
                         child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             const Padding(
                               padding: EdgeInsets.only(left: 8.0),
@@ -381,11 +385,7 @@ class _MapScreenState extends State<MapScreen> {
                               ),
                             ),
                           ],
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.start,
                         ),
-                        decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(32)), color: Colors.white),
-                        height: 32,
                       ),
                     ],
                   ),
@@ -395,7 +395,11 @@ class _MapScreenState extends State<MapScreen> {
                   child: Row(
                     children: [
                       Container(
+                        decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(32)), color: Colors.white),
+                        height: 32,
                         child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Padding(
                                 padding: const EdgeInsets.only(left: 8.0),
@@ -412,11 +416,7 @@ class _MapScreenState extends State<MapScreen> {
                               ),
                             ),
                           ],
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.start,
                         ),
-                        decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(32)), color: Colors.white),
-                        height: 32,
                       ),
                     ],
                   ),

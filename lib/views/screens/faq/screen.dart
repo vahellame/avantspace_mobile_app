@@ -3,7 +3,6 @@ import 'package:avantspace_mobile_app/views/widgets/bottom_navigation_panel.dart
 import 'package:avantspace_mobile_app/views/widgets/custom_burger_button.dart';
 import 'package:avantspace_mobile_app/views/widgets/custom_expansion_tile.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class FAQScreen extends StatefulWidget {
   const FAQScreen({Key? key}) : super(key: key);
@@ -29,6 +28,7 @@ class _FAQScreenState extends State<FAQScreen> {
               child: Column(
                 children: [
                   Container(
+                    color: const Color(0xffffffff),
                     child: Row(
                       children: [
                         Expanded(
@@ -42,7 +42,6 @@ class _FAQScreenState extends State<FAQScreen> {
                         ),
                       ],
                     ),
-                    color: const Color(0xffffffff),
                   ),
                   Stack(
                     children: [
@@ -54,6 +53,7 @@ class _FAQScreenState extends State<FAQScreen> {
                         tabs: [
                           for (int i = 1; i <= 10; i++)
                             Tab(
+                              height: 32,
                               child: Container(
                                 decoration: BoxDecoration(
                                   border: Border.all(color: ViewConfigColors.primary700, width: 1),
@@ -66,7 +66,6 @@ class _FAQScreenState extends State<FAQScreen> {
                                   ),
                                 ),
                               ),
-                              height: 32,
                             ),
                         ],
                         indicator: BoxDecoration(
@@ -132,6 +131,7 @@ class _FAQScreenState extends State<FAQScreen> {
                 children: [
                   Expanded(child: Container()),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(right: 16, bottom: 16),
@@ -148,7 +148,6 @@ class _FAQScreenState extends State<FAQScreen> {
                         ),
                       ),
                     ],
-                    mainAxisAlignment: MainAxisAlignment.end,
                   ),
                 ],
               ),

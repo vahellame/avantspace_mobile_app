@@ -6,6 +6,12 @@ class CameraButtonRecordVideo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        shape: BoxShape.circle,
+      ),
+      height: 64,
+      width: 64,
       child: Center(
         child: Container(
           decoration: const BoxDecoration(
@@ -16,12 +22,6 @@ class CameraButtonRecordVideo extends StatelessWidget {
           width: 16,
         ),
       ),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        shape: BoxShape.circle,
-      ),
-      height: 64,
-      width: 64,
     );
   }
 }

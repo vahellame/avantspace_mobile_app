@@ -10,11 +10,20 @@ class BottomNavigationPanel extends StatelessWidget {
   Widget build(BuildContext context) {
     final CurrentBottomNavigationPanelPage currentBottomNavigationPanelPage = context.watch<BottomNavigationPanelModel>().currentBottomNavigationPanelPage;
     return Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(16),
+          topRight: Radius.circular(16),
+        ),
+      ),
+      height: 280,
       child: Column(
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 12.0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
                   decoration: BoxDecoration(
@@ -25,14 +34,25 @@ class BottomNavigationPanel extends StatelessWidget {
                   width: 38,
                 ),
               ],
-              mainAxisAlignment: MainAxisAlignment.center,
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8.0, left: 8, right: 8),
             child: Material(
+              borderRadius: BorderRadius.circular(16),
+              color: Colors.transparent,
               child: InkWell(
+                borderRadius: BorderRadius.circular(16),
+                onTap: () {
+                  context.read<BottomNavigationPanelModel>().setCurrentBottomNavigationPanelPage(CurrentBottomNavigationPanelPage.ar);
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, '/home');
+                },
                 child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: currentBottomNavigationPanelPage == CurrentBottomNavigationPanelPage.ar ? ViewConfigColors.primaryOverlaySelected : Colors.transparent,
+                  ),
                   child: Row(
                     children: [
                       Padding(
@@ -61,27 +81,27 @@ class BottomNavigationPanel extends StatelessWidget {
                       ),
                     ],
                   ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: currentBottomNavigationPanelPage == CurrentBottomNavigationPanelPage.ar ? ViewConfigColors.primaryOverlaySelected : Colors.transparent,
-                  ),
                 ),
-                borderRadius: BorderRadius.circular(16),
-                onTap: () {
-                  context.read<BottomNavigationPanelModel>().setCurrentBottomNavigationPanelPage(CurrentBottomNavigationPanelPage.ar);
-                  Navigator.pop(context);
-                  Navigator.pushNamed(context, '/home');
-                },
               ),
-              borderRadius: BorderRadius.circular(16),
-              color: Colors.transparent,
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8.0, left: 8, right: 8),
             child: Material(
+              borderRadius: BorderRadius.circular(16),
+              color: Colors.transparent,
               child: InkWell(
+                borderRadius: BorderRadius.circular(16),
+                onTap: () {
+                  context.read<BottomNavigationPanelModel>().setCurrentBottomNavigationPanelPage(CurrentBottomNavigationPanelPage.map);
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, '/map');
+                },
                 child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: currentBottomNavigationPanelPage == CurrentBottomNavigationPanelPage.map ? ViewConfigColors.primaryOverlaySelected : Colors.transparent,
+                  ),
                   child: Row(
                     children: [
                       Padding(
@@ -110,27 +130,27 @@ class BottomNavigationPanel extends StatelessWidget {
                       ),
                     ],
                   ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: currentBottomNavigationPanelPage == CurrentBottomNavigationPanelPage.map ? ViewConfigColors.primaryOverlaySelected : Colors.transparent,
-                  ),
                 ),
-                borderRadius: BorderRadius.circular(16),
-                onTap: () {
-                  context.read<BottomNavigationPanelModel>().setCurrentBottomNavigationPanelPage(CurrentBottomNavigationPanelPage.map);
-                  Navigator.pop(context);
-                  Navigator.pushNamed(context, '/map');
-                },
               ),
-              borderRadius: BorderRadius.circular(16),
-              color: Colors.transparent,
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8.0, left: 8, right: 8),
             child: Material(
+              borderRadius: BorderRadius.circular(16),
+              color: Colors.transparent,
               child: InkWell(
+                borderRadius: BorderRadius.circular(16),
+                onTap: () {
+                  context.read<BottomNavigationPanelModel>().setCurrentBottomNavigationPanelPage(CurrentBottomNavigationPanelPage.upcomingSessions);
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, '/upcoming_sessions');
+                },
                 child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: currentBottomNavigationPanelPage == CurrentBottomNavigationPanelPage.upcomingSessions ? ViewConfigColors.primaryOverlaySelected : Colors.transparent,
+                  ),
                   child: Row(
                     children: [
                       Padding(
@@ -159,27 +179,27 @@ class BottomNavigationPanel extends StatelessWidget {
                       ),
                     ],
                   ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: currentBottomNavigationPanelPage == CurrentBottomNavigationPanelPage.upcomingSessions ? ViewConfigColors.primaryOverlaySelected : Colors.transparent,
-                  ),
                 ),
-                borderRadius: BorderRadius.circular(16),
-                onTap: () {
-                  context.read<BottomNavigationPanelModel>().setCurrentBottomNavigationPanelPage(CurrentBottomNavigationPanelPage.upcomingSessions);
-                  Navigator.pop(context);
-                  Navigator.pushNamed(context, '/upcoming_sessions');
-                },
               ),
-              borderRadius: BorderRadius.circular(16),
-              color: Colors.transparent,
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8.0, left: 8, right: 8, bottom: 8),
             child: Material(
+              borderRadius: BorderRadius.circular(16),
+              color: Colors.transparent,
               child: InkWell(
+                borderRadius: BorderRadius.circular(16),
+                onTap: () {
+                  context.read<BottomNavigationPanelModel>().setCurrentBottomNavigationPanelPage(CurrentBottomNavigationPanelPage.faq);
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, '/faq');
+                },
                 child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: currentBottomNavigationPanelPage == CurrentBottomNavigationPanelPage.faq ? ViewConfigColors.primaryOverlaySelected : Colors.transparent,
+                  ),
                   child: Row(
                     children: [
                       Padding(
@@ -208,32 +228,12 @@ class BottomNavigationPanel extends StatelessWidget {
                       ),
                     ],
                   ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: currentBottomNavigationPanelPage == CurrentBottomNavigationPanelPage.faq ? ViewConfigColors.primaryOverlaySelected : Colors.transparent,
-                  ),
                 ),
-                borderRadius: BorderRadius.circular(16),
-                onTap: () {
-                  context.read<BottomNavigationPanelModel>().setCurrentBottomNavigationPanelPage(CurrentBottomNavigationPanelPage.faq);
-                  Navigator.pop(context);
-                  Navigator.pushNamed(context, '/faq');
-                },
               ),
-              borderRadius: BorderRadius.circular(16),
-              color: Colors.transparent,
             ),
           ),
         ],
       ),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(16),
-          topRight: Radius.circular(16),
-        ),
-      ),
-      height: 280,
     );
   }
 }

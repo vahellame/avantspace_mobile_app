@@ -29,9 +29,11 @@ class _MessageRecognizedScreenState extends State<MessageRecognizedScreen> {
         child: Column(
           children: [
             Container(
+              color: const Color(0xffffffff),
               child: Row(
                 children: [
                   Material(
+                    color: const Color(0xffffffff),
                     child: InkWell(
                       child: const Padding(
                         padding: EdgeInsets.all(16),
@@ -45,7 +47,6 @@ class _MessageRecognizedScreenState extends State<MessageRecognizedScreen> {
                         Navigator.pushReplacementNamed(context, '/home');
                       },
                     ),
-                    color: const Color(0xffffffff),
                   ),
                   Expanded(
                     child: Text(
@@ -55,7 +56,6 @@ class _MessageRecognizedScreenState extends State<MessageRecognizedScreen> {
                   ),
                 ],
               ),
-              color: const Color(0xffffffff),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 16, left: 16),
@@ -71,6 +71,8 @@ class _MessageRecognizedScreenState extends State<MessageRecognizedScreen> {
             Padding(
               padding: const EdgeInsets.only(top: 8.0, left: 16, right: 16),
               child: Container(
+                decoration: BoxDecoration(color: const Color(0xffffffff), borderRadius: BorderRadius.circular(8)),
+                height: 40,
                 child: Row(
                   children: [
                     Padding(
@@ -81,6 +83,7 @@ class _MessageRecognizedScreenState extends State<MessageRecognizedScreen> {
                       ),
                     ),
                     Material(
+                      color: Colors.white,
                       child: InkWell(
                         child: Text(
                           'avantspace.com',
@@ -88,7 +91,6 @@ class _MessageRecognizedScreenState extends State<MessageRecognizedScreen> {
                         ),
                         onTap: () {},
                       ),
-                      color: Colors.white,
                     ),
                     Expanded(child: Container()),
                     Padding(
@@ -115,14 +117,13 @@ class _MessageRecognizedScreenState extends State<MessageRecognizedScreen> {
                     ),
                   ],
                 ),
-                decoration: BoxDecoration(color: const Color(0xffffffff), borderRadius: BorderRadius.circular(8)),
-                height: 40,
               ),
             ),
             Expanded(child: Container()),
             Padding(
               padding: const EdgeInsets.only(right: 16),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   CustomBurgerButton(
                     onTap: () {
@@ -136,12 +137,15 @@ class _MessageRecognizedScreenState extends State<MessageRecognizedScreen> {
                     },
                   ),
                 ],
-                mainAxisAlignment: MainAxisAlignment.end,
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(16),
               child: Container(
+                decoration: BoxDecoration(
+                  color: const Color(0xffffffff),
+                  borderRadius: BorderRadius.circular(8),
+                ),
                 child: Row(
                   children: [
                     const Expanded(
@@ -164,10 +168,6 @@ class _MessageRecognizedScreenState extends State<MessageRecognizedScreen> {
                       ),
                     ),
                   ],
-                ),
-                decoration: BoxDecoration(
-                  color: const Color(0xffffffff),
-                  borderRadius: BorderRadius.circular(8),
                 ),
               ),
             ),

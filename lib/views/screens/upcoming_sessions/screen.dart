@@ -2,7 +2,6 @@ import 'package:avantspace_mobile_app/views/view_config.dart';
 import 'package:avantspace_mobile_app/views/widgets/bottom_navigation_panel.dart';
 import 'package:avantspace_mobile_app/views/widgets/custom_burger_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class UpcomingSessionsScreen extends StatefulWidget {
@@ -27,6 +26,7 @@ class _UpcomingSessionsScreenState extends State<UpcomingSessionsScreen> {
             child: Column(
               children: [
                 Container(
+                  color: const Color(0xffffffff),
                   child: Row(
                     children: [
                       Expanded(
@@ -40,7 +40,6 @@ class _UpcomingSessionsScreenState extends State<UpcomingSessionsScreen> {
                       ),
                     ],
                   ),
-                  color: const Color(0xffffffff),
                 ),
                 Expanded(
                   child: ListView(
@@ -48,6 +47,11 @@ class _UpcomingSessionsScreenState extends State<UpcomingSessionsScreen> {
                       Padding(
                         padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
                         child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: Colors.white,
+                          ),
+                          height: 141,
                           child: Column(
                             children: [
                               Padding(
@@ -55,19 +59,21 @@ class _UpcomingSessionsScreenState extends State<UpcomingSessionsScreen> {
                                 child: Row(
                                   children: [
                                     Container(
+                                      decoration: BoxDecoration(color: ViewConfigColors.bg, borderRadius: BorderRadius.circular(10)),
+                                      height: 52,
+                                      width: 52,
                                       child: Center(
                                         child: Image.asset(
                                           'assets/images/flags/us.png',
                                           width: 28,
                                         ),
                                       ),
-                                      decoration: BoxDecoration(color: ViewConfigColors.bg, borderRadius: BorderRadius.circular(10)),
-                                      height: 52,
-                                      width: 52,
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 16),
                                       child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             '16 April, 2022',
@@ -105,8 +111,6 @@ class _UpcomingSessionsScreenState extends State<UpcomingSessionsScreen> {
                                             ],
                                           ),
                                         ],
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
                                       ),
                                     ),
                                   ],
@@ -145,16 +149,16 @@ class _UpcomingSessionsScreenState extends State<UpcomingSessionsScreen> {
                               ),
                             ],
                           ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: Colors.white,
-                          ),
-                          height: 141,
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
                         child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: Colors.white,
+                          ),
+                          height: 141,
                           child: Column(
                             children: [
                               Padding(
@@ -162,19 +166,21 @@ class _UpcomingSessionsScreenState extends State<UpcomingSessionsScreen> {
                                 child: Row(
                                   children: [
                                     Container(
+                                      decoration: BoxDecoration(color: ViewConfigColors.bg, borderRadius: BorderRadius.circular(10)),
+                                      height: 52,
+                                      width: 52,
                                       child: Center(
                                         child: Image.asset(
                                           'assets/images/flags/gm.png',
                                           width: 28,
                                         ),
                                       ),
-                                      decoration: BoxDecoration(color: ViewConfigColors.bg, borderRadius: BorderRadius.circular(10)),
-                                      height: 52,
-                                      width: 52,
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 16),
                                       child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             '18 April, 2022',
@@ -212,8 +218,6 @@ class _UpcomingSessionsScreenState extends State<UpcomingSessionsScreen> {
                                             ],
                                           ),
                                         ],
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
                                       ),
                                     ),
                                   ],
@@ -252,16 +256,16 @@ class _UpcomingSessionsScreenState extends State<UpcomingSessionsScreen> {
                               ),
                             ],
                           ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: Colors.white,
-                          ),
-                          height: 141,
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
                         child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: Colors.white,
+                          ),
+                          height: 141,
                           child: Column(
                             children: [
                               Padding(
@@ -269,19 +273,21 @@ class _UpcomingSessionsScreenState extends State<UpcomingSessionsScreen> {
                                 child: Row(
                                   children: [
                                     Container(
+                                      decoration: BoxDecoration(color: ViewConfigColors.bg, borderRadius: BorderRadius.circular(10)),
+                                      height: 52,
+                                      width: 52,
                                       child: Center(
                                         child: Image.asset(
                                           'assets/images/flags/ge.png',
                                           width: 28,
                                         ),
                                       ),
-                                      decoration: BoxDecoration(color: ViewConfigColors.bg, borderRadius: BorderRadius.circular(10)),
-                                      height: 52,
-                                      width: 52,
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 16),
                                       child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             '22 April, 2022',
@@ -319,8 +325,6 @@ class _UpcomingSessionsScreenState extends State<UpcomingSessionsScreen> {
                                             ],
                                           ),
                                         ],
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
                                       ),
                                     ),
                                   ],
@@ -359,16 +363,16 @@ class _UpcomingSessionsScreenState extends State<UpcomingSessionsScreen> {
                               ),
                             ],
                           ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: Colors.white,
-                          ),
-                          height: 141,
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
                         child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: Colors.white,
+                          ),
+                          height: 141,
                           child: Column(
                             children: [
                               Padding(
@@ -376,19 +380,21 @@ class _UpcomingSessionsScreenState extends State<UpcomingSessionsScreen> {
                                 child: Row(
                                   children: [
                                     Container(
+                                      decoration: BoxDecoration(color: ViewConfigColors.bg, borderRadius: BorderRadius.circular(10)),
+                                      height: 52,
+                                      width: 52,
                                       child: Center(
                                         child: Image.asset(
                                           'assets/images/flags/gb.png',
                                           width: 28,
                                         ),
                                       ),
-                                      decoration: BoxDecoration(color: ViewConfigColors.bg, borderRadius: BorderRadius.circular(10)),
-                                      height: 52,
-                                      width: 52,
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 16),
                                       child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             '24 April, 2022',
@@ -426,8 +432,6 @@ class _UpcomingSessionsScreenState extends State<UpcomingSessionsScreen> {
                                             ],
                                           ),
                                         ],
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
                                       ),
                                     ),
                                   ],
@@ -466,11 +470,6 @@ class _UpcomingSessionsScreenState extends State<UpcomingSessionsScreen> {
                               ),
                             ],
                           ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: Colors.white,
-                          ),
-                          height: 141,
                         ),
                       ),
                       Container(
@@ -489,6 +488,7 @@ class _UpcomingSessionsScreenState extends State<UpcomingSessionsScreen> {
                 Padding(
                   padding: const EdgeInsets.only(right: 16, bottom: 16),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       CustomBurgerButton(
                         onTap: () {
@@ -502,7 +502,6 @@ class _UpcomingSessionsScreenState extends State<UpcomingSessionsScreen> {
                         },
                       ),
                     ],
-                    mainAxisAlignment: MainAxisAlignment.end,
                   ),
                 ),
               ],

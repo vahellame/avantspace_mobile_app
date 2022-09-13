@@ -6,7 +6,6 @@ import 'package:avantspace_mobile_app/views/widgets/bottom_navigation_panel.dart
 import 'package:avantspace_mobile_app/views/widgets/custom_burger_button.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +20,7 @@ class HomeScreen extends StatefulWidget {
 
 class HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   final GlobalKey _globalKey = GlobalKey();
-  late CameraController? _controller;
+  late  CameraController? _controller;
   late Future<void> _initializeControllerFuture;
   late CameraButtonState _cameraButtonState;
 
@@ -117,8 +116,13 @@ class HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 16, right: 16, left: 16),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Container(
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: Colors.white),
+                        height: 56,
+                        width: 56,
                         child: const Center(
                           child: Icon(
                             Icons.center_focus_strong_rounded,
@@ -126,28 +130,27 @@ class HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                             color: ViewConfigColors.primary700,
                           ),
                         ),
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: Colors.white),
-                        height: 56,
-                        width: 56,
                       ),
                       InkWell(
-                        child: Builder(
-                          builder: (BuildContext context) {
-                            switch (_cameraButtonState) {
-                              case CameraButtonState.recordVideo:
-                                return const CameraButtonRecordVideo();
-                              case CameraButtonState.stopRecording:
-                                return const CameraButtonStopRecording();
-                              case CameraButtonState.takePhoto:
-                                return const CameraButtonRecordVideo();
-                            }
-                          },
-                        ),
                         onTap: () async {
                           try {
                             switch (_cameraButtonState) {
                               case CameraButtonState.recordVideo:
                                 await _controller!.startVideoRecording();
+                                Future.delayed(const Duration(seconds: 5)).then(
+                                  (_) async {
+                                    final XFile xfile = await _controller!.stopVideoRecording();
+                                    await GallerySaver.saveVideo(xfile.path);
+                                    if (!mounted) return;
+                                    context.read<CameraModel>().setLastVideoFilePath(xfile.path);
+                                    Navigator.pushReplacementNamed(context, '/message_recognized');
+                                    setState(
+                                          () {
+                                        _cameraButtonState = CameraButtonState.recordVideo;
+                                      },
+                                    );
+                                  },
+                                );
                                 setState(
                                   () {
                                     _cameraButtonState = CameraButtonState.stopRecording;
@@ -157,6 +160,7 @@ class HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                               case CameraButtonState.stopRecording:
                                 final XFile xfile = await _controller!.stopVideoRecording();
                                 await GallerySaver.saveVideo(xfile.path);
+                                if (!mounted) return;
                                 context.read<CameraModel>().setLastVideoFilePath(xfile.path);
                                 Navigator.pushReplacementNamed(context, '/message_recognized');
                                 setState(
@@ -177,6 +181,7 @@ class HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                                   _controller = null;
                                 },
                               );
+                              if (!mounted) return;
                               _controller = CameraController(
                                 context.read<CameraModel>().cameras[0],
                                 ResolutionPreset.max,
@@ -196,6 +201,18 @@ class HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                           }
                         },
                         borderRadius: BorderRadius.circular(56),
+                        child: Builder(
+                          builder: (BuildContext context) {
+                            switch (_cameraButtonState) {
+                              case CameraButtonState.recordVideo:
+                                return const CameraButtonRecordVideo();
+                              case CameraButtonState.stopRecording:
+                                return const CameraButtonStopRecording();
+                              case CameraButtonState.takePhoto:
+                                return const CameraButtonRecordVideo();
+                            }
+                          },
+                        ),
                       ),
                       CustomBurgerButton(
                         onTap: () {
@@ -209,8 +226,6 @@ class HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                         },
                       ),
                     ],
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.end,
                   ),
                 ),
               ],
@@ -249,9 +264,11 @@ class HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
         enableAudio: true,
       );
       _controller!.addListener(controllerListener);
-      setState(() {
-        _initializeControllerFuture = _controller!.initialize();
-      },);
+      setState(
+        () {
+          _initializeControllerFuture = _controller!.initialize();
+        },
+      );
     }
   }
 

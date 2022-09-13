@@ -14,8 +14,17 @@ class SecondaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      borderRadius: const BorderRadius.all(Radius.circular(16)),
+      color: Colors.transparent,
       child: InkWell(
+        onTap: onTap,
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
         child: Container(
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(Radius.circular(16)),
+            border: Border.all(color: ViewConfigColors.primary700, width: 1),
+          ),
+          height: 44,
           child: Center(
             child: Padding(
               padding: const EdgeInsets.only(left: 16, right: 16),
@@ -25,17 +34,8 @@ class SecondaryButton extends StatelessWidget {
               ),
             ),
           ),
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(16)),
-            border: Border.all(color: ViewConfigColors.primary700, width: 1),
-          ),
-          height: 44,
         ),
-        onTap: onTap,
-        borderRadius: const BorderRadius.all(Radius.circular(16)),
       ),
-      borderRadius: const BorderRadius.all(Radius.circular(16)),
-      color: Colors.transparent,
     );
   }
 }

@@ -3,7 +3,6 @@ import 'package:avantspace_mobile_app/views/view_config.dart';
 import 'package:avantspace_mobile_app/views/widgets/custom_close_button.dart';
 import 'package:avantspace_mobile_app/views/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class PushBroadcastingScreen extends StatefulWidget {
   const PushBroadcastingScreen({Key? key}) : super(key: key);
@@ -27,6 +26,7 @@ class _PushBroadcastingScreenState extends State<PushBroadcastingScreen> {
             child: Column(
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(right: 16, top: 16),
@@ -37,7 +37,6 @@ class _PushBroadcastingScreenState extends State<PushBroadcastingScreen> {
                       ),
                     ),
                   ],
-                  mainAxisAlignment: MainAxisAlignment.end,
                 ),
               ],
             ),
@@ -69,13 +68,13 @@ class _PushBroadcastingScreenState extends State<PushBroadcastingScreen> {
                 Padding(
                   padding: const EdgeInsets.only(top: 16, left: 36, right: 36),
                   child: SizedBox(
+                    width: 177,
                     child: PrimaryButton(
                       text: 'подробнее'.toUpperCase(),
                       onTap: () {
                         Navigator.pushReplacementNamed(context, '/bad_characteristics');
                       },
                     ),
-                    width: 177,
                   ),
                 ),
                 Expanded(child: Container()),

@@ -14,9 +14,17 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      borderRadius: const BorderRadius.all(Radius.circular(16)),
+      color: ViewConfigColors.primary700,
       child: InkWell(
-        child: Container(
-          child: Center(
+        onTap: onTap,
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
+        child: Center(
+          child: Container(
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(16)),
+            ),
+            height: 44,
             child: Padding(
               padding: const EdgeInsets.only(left: 16, right: 16),
               child: Text(
@@ -25,16 +33,8 @@ class PrimaryButton extends StatelessWidget {
               ),
             ),
           ),
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(16)),
-          ),
-          height: 44,
         ),
-        onTap: onTap,
-        borderRadius: const BorderRadius.all(Radius.circular(16)),
       ),
-      borderRadius: const BorderRadius.all(Radius.circular(16)),
-      color: ViewConfigColors.primary700,
     );
   }
 }

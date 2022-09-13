@@ -1,7 +1,6 @@
 import 'package:avantspace_mobile_app/views/view_config.dart';
 import 'package:avantspace_mobile_app/views/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class BadPlaceScreen extends StatefulWidget {
   const BadPlaceScreen({Key? key}) : super(key: key);
@@ -46,13 +45,13 @@ class _BadPlaceScreenState extends State<BadPlaceScreen> {
             Padding(
               padding: const EdgeInsets.only(top: 16, left: 36, right: 36),
               child: SizedBox(
+                width: 112,
                 child: PrimaryButton(
                   text: 'OK',
                   onTap: () {
                     Navigator.pushReplacementNamed(context, '/home');
                   },
                 ),
-                width: 112,
               ),
             ),
             Expanded(child: Container()),

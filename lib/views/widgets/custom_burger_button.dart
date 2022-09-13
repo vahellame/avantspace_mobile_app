@@ -12,8 +12,17 @@ class CustomBurgerButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      borderRadius: const BorderRadius.all(Radius.circular(12)),
+      color: Colors.white,
       child: InkWell(
+        onTap: onTap,
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
         child: Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(12)),
+          ),
+          height: 56,
+          width: 56,
           child: const Center(
             child: Icon(
               Icons.menu_rounded,
@@ -21,17 +30,8 @@ class CustomBurgerButton extends StatelessWidget {
               size: 32,
             ),
           ),
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(12)),
-          ),
-          height: 56,
-          width: 56,
         ),
-        onTap: onTap,
-        borderRadius: const BorderRadius.all(Radius.circular(12)),
       ),
-      borderRadius: const BorderRadius.all(Radius.circular(12)),
-      color: Colors.white,
     );
   }
 }

@@ -7,6 +7,12 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/images/splash_bg.jpg'),
+          fit: BoxFit.cover,
+        ),
+      ),
       child: Scaffold(
         body: Center(
           child: Column(
@@ -20,12 +26,6 @@ class SplashScreen extends StatelessWidget {
           ),
         ),
         backgroundColor: Colors.transparent,
-      ),
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('assets/images/splash_bg.jpg'),
-          fit: BoxFit.cover,
-        ),
       ),
     );
   }

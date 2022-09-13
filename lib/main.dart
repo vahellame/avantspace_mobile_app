@@ -16,50 +16,15 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
-Future<void> init(BuildContext context) async {
-  await Future.delayed(const Duration(milliseconds: 1)); // Without this total fuck
-
-  Map<Permission, PermissionStatus> statuses = await [
-    Permission.location,
-    Permission.locationAlways,
-    Permission.locationWhenInUse,
-    Permission.accessMediaLocation,
-    Permission.storage,
-    Permission.camera,
-    Permission.microphone,
-  ].request();
-
-  for (Permission permission in statuses.keys.toList()) {
-    print('$permission ${statuses[permission]}');
-    if (statuses[permission] != PermissionStatus.granted) {
-      Fluttertoast.showToast(
-        msg: 'Permissions required!',
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 1,
-      );
-    }
-  }
-
-  // FUCK
-  // HERE WE GO
-  await Future.delayed(const Duration(seconds: 1));
-  await context.read<CameraModel>().init();
-  await context.read<BottomNavigationPanelModel>().init();
-  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
-
-  print('init is done');
-}
-
 void main() {
   // WidgetsFlutterBinding.ensureInitialized();
   runApp(
     MultiProvider(
-      child: const AvantspaceApp(),
       providers: [
         ChangeNotifierProvider(create: (_) => CameraModel()),
         ChangeNotifierProvider(create: (_) => BottomNavigationPanelModel()),
       ],
+      child: const AvantspaceApp(),
     ),
   );
 }
@@ -75,8 +40,32 @@ class _AvantspaceAppState extends State<AvantspaceApp> {
   late Future<void> _initFuture;
   @override
   void initState() {
-    _initFuture = init(context);
+    _initFuture = init();
     super.initState();
+  }
+
+  Future<void> init() async {
+    await Future.delayed(const Duration(milliseconds: 1)); // Without this total fuck
+
+    // FUCK
+    // HERE WE GO
+    await Future.delayed(const Duration(seconds: 1));
+    await [
+      Permission.location,
+      Permission.locationAlways,
+      Permission.locationWhenInUse,
+      Permission.accessMediaLocation,
+      Permission.storage,
+      Permission.camera,
+      Permission.microphone,
+    ].request();
+    if (!mounted) return;
+    await context.read<CameraModel>().init();
+    if (!mounted) return;
+    await context.read<BottomNavigationPanelModel>().init();
+    await SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+
+    print('init is done');
   }
 
   @override

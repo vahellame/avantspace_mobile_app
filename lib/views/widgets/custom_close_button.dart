@@ -12,8 +12,18 @@ class CustomCloseButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      borderRadius: const BorderRadius.all(Radius.circular(16)),
+      color: ViewConfigColors.primary700,
       child: InkWell(
+        onTap: onTap,
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
         child: Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(16)),
+            boxShadow: ViewConfigShadows.dp01,
+          ),
+          height: 40,
+          width: 40,
           child: const Center(
             child: Icon(
               Icons.close_rounded,
@@ -21,18 +31,8 @@ class CustomCloseButton extends StatelessWidget {
               size: 32,
             ),
           ),
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(16)),
-            boxShadow: ViewConfigShadows.dp01,
-          ),
-          height: 40,
-          width: 40,
         ),
-        onTap: onTap,
-        borderRadius: const BorderRadius.all(Radius.circular(16)),
       ),
-      borderRadius: const BorderRadius.all(Radius.circular(16)),
-      color: ViewConfigColors.primary700,
       // elevation: 1,
     );
   }
