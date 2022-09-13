@@ -12,7 +12,6 @@ import 'package:avantspace_mobile_app/views/screens/test/screen.dart';
 import 'package:avantspace_mobile_app/views/screens/upcoming_sessions/screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 

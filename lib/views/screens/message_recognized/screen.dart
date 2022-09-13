@@ -5,7 +5,6 @@ import 'package:avantspace_mobile_app/views/widgets/custom_burger_button.dart';
 import 'package:avantspace_mobile_app/views/widgets/custom_share_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -106,12 +105,16 @@ class _MessageRecognizedScreenState extends State<MessageRecognizedScreen> {
                         ),
                         onTap: () async {
                           await Clipboard.setData(const ClipboardData(text: 'Заходи: avantspace.com'));
-                          Fluttertoast.showToast(
-                            msg: 'Copied!',
-                            toastLength: Toast.LENGTH_SHORT,
-                            gravity: ToastGravity.BOTTOM,
-                            timeInSecForIosWeb: 1,
+                          final snackBar = SnackBar(
+                            content: const Text('Copied'),
+                            action: SnackBarAction(
+                              label: 'Close',
+                              onPressed: () {
+                                // Some code to undo the change.
+                              },
+                            ),
                           );
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         },
                       ),
                     ),
